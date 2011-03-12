@@ -1,0 +1,26 @@
+
+
+Started GET "/" for 127.0.0.1 at Fri Mar 11 22:22:15 -0700 2011
+
+ActionController::RoutingError (No route matches "/"):
+  
+
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri Mar 11 22:26:14 -0700 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri Mar 11 22:26:36 -0700 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Fri Mar 11 22:46:51 -0700 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.0ms)
