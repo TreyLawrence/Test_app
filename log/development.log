@@ -896,3 +896,403 @@ Rendered tags/_form.html.erb (1.1ms)
 Rendered posts/_form.html.erb (18.7ms)
 Rendered posts/new.html.erb within layouts/application (22.6ms)
 Completed 200 OK in 39ms (Views: 29.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at Sat Mar 12 17:47:06 -0700 2011
+  Processing by PostsController#new as HTML
+Rendered tags/_form.html.erb (1.9ms)
+Rendered posts/_form.html.erb (139.4ms)
+Rendered posts/new.html.erb within layouts/application (145.5ms)
+Completed 200 OK in 256ms (Views: 176.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Sat Mar 12 17:47:11 -0700 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 11ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Mar 13 20:13:41 -0700 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 59ms (Views: 58.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Mar 13 20:13:43 -0700 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (30.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 188ms (Views: 38.1ms | ActiveRecord: 30.2ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at Sun Mar 13 20:13:48 -0700 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mSQL (2.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE ("tags".post_id = 3)
+Rendered tags/_form.html.erb (3.6ms)
+Rendered posts/_form.html.erb (165.9ms)
+Rendered posts/edit.html.erb within layouts/application (195.9ms)
+Completed 200 OK in 239ms (Views: 225.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Mar 13 20:14:59 -0700 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 23ms (Views: 12.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at Sun Mar 13 21:03:49 -0700 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (39.6ms)
+Completed   in 130ms
+
+ActionView::Template::Error (undefined local variable or method `posts' for #<#<Class:0x2584f88>:0x25840b0>):
+    17: 
+    18: <p>
+    19: 	<b>Tags:</b>
+    20: 	<%= join_tags(@post) %>
+    21: </p>
+    22: 
+    23: <h2>Comments</h2>
+  app/helpers/posts_helper.rb:3:in `join_tags'
+  app/views/posts/show.html.erb:20:in `_app_views_posts_show_html_erb___46918888_19667250_0'
+  app/controllers/posts_controller.rb:20:in `show'
+
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (47.5ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (63.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Mar 13 21:03:58 -0700 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 23ms (Views: 13.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at Sun Mar 13 21:04:01 -0700 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE ("tags".post_id = 3)[0m
+Rendered tags/_form.html.erb (2.9ms)
+Rendered posts/_form.html.erb (20.5ms)
+Rendered posts/edit.html.erb within layouts/application (24.6ms)
+Completed 200 OK in 40ms (Views: 30.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/posts/3" for 127.0.0.1 at Sun Mar 13 21:04:08 -0700 2011
+  Processing by PostsController#update as HTML
+  Parameters: {"commit"=>"Update Post", "post"=>{"name"=>"Trey", "tags_attributes"=>{"0"=>{"name"=>"tag1", "id"=>"1", "_destroy"=>"0"}, "1"=>{"name"=>""}}, "title"=>"this is a test for tags", "content"=>"hello tags, i will tag you tag"}, "authenticity_token"=>"L735jRe0rvSMgXPsoNSfwrYqJUQLfkdrEbldsoQAM+E=", "utf8"=>"✓", "id"=>"3"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+  [1m[36mTag Load (26.0ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1) AND ("tags".post_id = 3)[0m
+  [1m[35mAREL (0.6ms)[0m  UPDATE "tags" SET "updated_at" = '2011-03-14 04:04:08.439461', "name" = 'tag1' WHERE "tags"."id" = 1
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 80ms
+
+
+Started GET "/posts/3" for 127.0.0.1 at Sun Mar 13 21:04:08 -0700 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (12.1ms)
+Completed   in 36ms
+
+ActionView::Template::Error (undefined local variable or method `posts' for #<#<Class:0x26586f8>:0x2657898>):
+    17: 
+    18: <p>
+    19: 	<b>Tags:</b>
+    20: 	<%= join_tags(@post) %>
+    21: </p>
+    22: 
+    23: <h2>Comments</h2>
+  app/helpers/posts_helper.rb:3:in `join_tags'
+  app/views/posts/show.html.erb:20:in `_app_views_posts_show_html_erb___46918888_20100400_0'
+  app/controllers/posts_controller.rb:20:in `show'
+
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.5ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (21.6ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at Sun Mar 13 21:04:10 -0700 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE ("tags".post_id = 3)[0m
+Rendered tags/_form.html.erb (3.1ms)
+Rendered posts/_form.html.erb (21.4ms)
+Rendered posts/edit.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 82ms (Views: 31.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/posts/3" for 127.0.0.1 at Sun Mar 13 21:04:13 -0700 2011
+  Processing by PostsController#update as HTML
+  Parameters: {"commit"=>"Update Post", "post"=>{"name"=>"Trey", "tags_attributes"=>{"0"=>{"name"=>"tag1", "id"=>"1", "_destroy"=>"0"}, "1"=>{"name"=>""}}, "title"=>"this is a test for tags", "content"=>"hello tags, i will tag you tag"}, "authenticity_token"=>"L735jRe0rvSMgXPsoNSfwrYqJUQLfkdrEbldsoQAM+E=", "utf8"=>"✓", "id"=>"3"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1) AND ("tags".post_id = 3)[0m
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 24ms
+
+
+Started GET "/posts/3" for 127.0.0.1 at Sun Mar 13 21:04:13 -0700 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (12.2ms)
+Completed   in 36ms
+
+ActionView::Template::Error (undefined local variable or method `posts' for #<#<Class:0x24bc448>:0x24baa80>):
+    17: 
+    18: <p>
+    19: 	<b>Tags:</b>
+    20: 	<%= join_tags(@post) %>
+    21: </p>
+    22: 
+    23: <h2>Comments</h2>
+  app/helpers/posts_helper.rb:3:in `join_tags'
+  app/views/posts/show.html.erb:20:in `_app_views_posts_show_html_erb___46918888_19253870_0'
+  app/controllers/posts_controller.rb:20:in `show'
+
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.1ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (22.8ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at Sun Mar 13 21:04:18 -0700 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1[0m
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" WHERE ("tags".post_id = 3)
+Rendered tags/_form.html.erb (2.9ms)
+Rendered posts/_form.html.erb (19.8ms)
+Rendered posts/edit.html.erb within layouts/application (23.9ms)
+Completed 200 OK in 39ms (Views: 29.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/posts/3" for 127.0.0.1 at Sun Mar 13 21:04:25 -0700 2011
+  Processing by PostsController#update as HTML
+  Parameters: {"commit"=>"Update Post", "post"=>{"name"=>"Trey", "tags_attributes"=>{"0"=>{"name"=>"tag1", "id"=>"1", "_destroy"=>"1"}, "1"=>{"name"=>""}}, "title"=>"this is a test for tags", "content"=>"hello tags, i will tag you tag"}, "authenticity_token"=>"L735jRe0rvSMgXPsoNSfwrYqJUQLfkdrEbldsoQAM+E=", "utf8"=>"✓", "id"=>"3"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1) AND ("tags".post_id = 3)
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM "tags" WHERE "tags"."id" = 1[0m
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" WHERE ("tags".post_id = 3)
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 79ms
+
+
+Started GET "/posts/3" for 127.0.0.1 at Sun Mar 13 21:04:25 -0700 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (12.4ms)
+Completed   in 38ms
+
+ActionView::Template::Error (undefined local variable or method `posts' for #<#<Class:0x2617450>:0x2614bc4>):
+    17: 
+    18: <p>
+    19: 	<b>Tags:</b>
+    20: 	<%= join_tags(@post) %>
+    21: </p>
+    22: 
+    23: <h2>Comments</h2>
+  app/helpers/posts_helper.rb:3:in `join_tags'
+  app/views/posts/show.html.erb:20:in `_app_views_posts_show_html_erb___46918888_19963580_0'
+  app/controllers/posts_controller.rb:20:in `show'
+
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.6ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (21.5ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at Sun Mar 13 21:04:27 -0700 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE ("tags".post_id = 3)[0m
+Rendered tags/_form.html.erb (2.3ms)
+Rendered posts/_form.html.erb (20.1ms)
+Rendered posts/edit.html.erb within layouts/application (24.2ms)
+Completed 200 OK in 40ms (Views: 29.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/posts/3" for 127.0.0.1 at Sun Mar 13 21:04:30 -0700 2011
+  Processing by PostsController#update as HTML
+  Parameters: {"commit"=>"Update Post", "post"=>{"name"=>"Trey", "tags_attributes"=>{"0"=>{"name"=>""}}, "title"=>"this is a test for tags", "content"=>"hello tags, i will tag you tag"}, "authenticity_token"=>"L735jRe0rvSMgXPsoNSfwrYqJUQLfkdrEbldsoQAM+E=", "utf8"=>"✓", "id"=>"3"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 23ms
+
+
+Started GET "/posts/3" for 127.0.0.1 at Sun Mar 13 21:04:30 -0700 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (12.1ms)
+Completed   in 35ms
+
+ActionView::Template::Error (undefined local variable or method `posts' for #<#<Class:0x24a0838>:0x249f974>):
+    17: 
+    18: <p>
+    19: 	<b>Tags:</b>
+    20: 	<%= join_tags(@post) %>
+    21: </p>
+    22: 
+    23: <h2>Comments</h2>
+  app/helpers/posts_helper.rb:3:in `join_tags'
+  app/views/posts/show.html.erb:20:in `_app_views_posts_show_html_erb___46918888_19199380_0'
+  app/controllers/posts_controller.rb:20:in `show'
+
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.7ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (23.5ms)
+
+
+Started GET "/posts/3/edit" for 127.0.0.1 at Sun Mar 13 21:04:31 -0700 2011
+  Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 3 LIMIT 1
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE ("tags".post_id = 3)[0m
+Rendered tags/_form.html.erb (2.3ms)
+Rendered posts/_form.html.erb (19.5ms)
+Rendered posts/edit.html.erb within layouts/application (23.5ms)
+Completed 200 OK in 39ms (Views: 28.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Mar 13 21:04:33 -0700 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (53.7ms)
+Completed 200 OK in 69ms (Views: 59.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at Sun Mar 13 21:04:34 -0700 2011
+  Processing by PostsController#new as HTML
+Rendered tags/_form.html.erb (1.0ms)
+Rendered posts/_form.html.erb (23.2ms)
+Rendered posts/new.html.erb within layouts/application (28.1ms)
+Completed 200 OK in 79ms (Views: 66.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Sun Mar 13 21:04:45 -0700 2011
+  Processing by PostsController#create as HTML
+  Parameters: {"commit"=>"Create Post", "post"=>{"name"=>"teewd", "tags_attributes"=>{"0"=>{"name"=>""}}, "title"=>"fwd wfcefdc", "content"=>"ewfcefcewcfecf"}, "authenticity_token"=>"L735jRe0rvSMgXPsoNSfwrYqJUQLfkdrEbldsoQAM+E=", "utf8"=>"✓"}
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "posts" ("created_at", "name", "content", "updated_at", "title") VALUES ('2011-03-14 04:04:45.305815', 'teewd', 'ewfcefcewcfecf', '2011-03-14 04:04:45.305815', 'fwd wfcefdc')[0m
+Redirected to http://localhost:3000/posts/5
+Completed 302 Found in 24ms
+
+
+Started GET "/posts/5" for 127.0.0.1 at Sun Mar 13 21:04:45 -0700 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."id" = 5 LIMIT 1
+Rendered posts/show.html.erb within layouts/application (11.8ms)
+Completed   in 88ms
+
+ActionView::Template::Error (undefined local variable or method `posts' for #<#<Class:0x2458894>:0x2457a34>):
+    17: 
+    18: <p>
+    19: 	<b>Tags:</b>
+    20: 	<%= join_tags(@post) %>
+    21: </p>
+    22: 
+    23: <h2>Comments</h2>
+  app/helpers/posts_helper.rb:3:in `join_tags'
+  app/views/posts/show.html.erb:20:in `_app_views_posts_show_html_erb___46918888_19052050_0'
+  app/controllers/posts_controller.rb:20:in `show'
+
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.8ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (24.6ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at Sun Mar 13 21:04:48 -0700 2011
+  Processing by PostsController#new as HTML
+Rendered tags/_form.html.erb (1.1ms)
+Rendered posts/_form.html.erb (18.8ms)
+Rendered posts/new.html.erb within layouts/application (22.5ms)
+Completed 200 OK in 37ms (Views: 28.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Mar 13 21:05:04 -0700 2011
+  Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+Rendered posts/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 69ms (Views: 14.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at Sun Mar 13 21:05:04 -0700 2011
+  Processing by PostsController#new as HTML
+Rendered tags/_form.html.erb (1.1ms)
+Rendered posts/_form.html.erb (23.2ms)
+Rendered posts/new.html.erb within layouts/application (28.3ms)
+Completed 200 OK in 54ms (Views: 38.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at Sun Mar 13 21:05:07 -0700 2011
+  Processing by PostsController#create as HTML
+  Parameters: {"commit"=>"Create Post", "post"=>{"name"=>"teewd", "tags_attributes"=>{"0"=>{"name"=>""}}, "title"=>"fwd wfcefdc", "content"=>"ewfcefcewcfecf"}, "authenticity_token"=>"L735jRe0rvSMgXPsoNSfwrYqJUQLfkdrEbldsoQAM+E=", "utf8"=>"✓"}
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "posts" ("title", "updated_at", "created_at", "name", "content") VALUES ('fwd wfcefdc', '2011-03-14 04:05:07.696802', '2011-03-14 04:05:07.696802', 'teewd', 'ewfcefcewcfecf')
+Redirected to http://localhost:3000/posts/6
+Completed 302 Found in 22ms
+
+
+Started GET "/posts/6" for 127.0.0.1 at Sun Mar 13 21:05:07 -0700 2011
+  Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 6 LIMIT 1[0m
+Rendered posts/show.html.erb within layouts/application (12.6ms)
+Completed   in 91ms
+
+ActionView::Template::Error (undefined local variable or method `posts' for #<#<Class:0x2437e28>:0x2436fc8>):
+    17: 
+    18: <p>
+    19: 	<b>Tags:</b>
+    20: 	<%= join_tags(@post) %>
+    21: </p>
+    22: 
+    23: <h2>Comments</h2>
+  app/helpers/posts_helper.rb:3:in `join_tags'
+  app/views/posts/show.html.erb:20:in `_app_views_posts_show_html_erb___46918888_18985180_0'
+  app/controllers/posts_controller.rb:20:in `show'
+
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.7ms)
+Rendered /opt/local/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (22.3ms)
+
+
+Started GET "/" for 127.0.0.1 at Sun Mar 13 21:06:02 -0700 2011
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Mar 13 21:06:05 -0700 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 24ms (Views: 14.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/posts/5" for 127.0.0.1 at Sun Mar 13 21:06:09 -0700 2011
+  Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"L735jRe0rvSMgXPsoNSfwrYqJUQLfkdrEbldsoQAM+E=", "id"=>"5"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = 5 LIMIT 1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE ("comments".post_id = 5)
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = 5[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 47ms
+
+
+Started GET "/posts" for 127.0.0.1 at Sun Mar 13 21:06:09 -0700 2011
+  Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+Rendered posts/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 23ms (Views: 13.7ms | ActiveRecord: 0.5ms)
